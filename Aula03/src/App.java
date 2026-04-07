@@ -9,7 +9,7 @@ public class App {
         Integer opcao = 0;
         while (opcao != 6) {
             
-            System.out.println("Este é um CRUD de  alunos!\n Digite 1 para cadastrar\n Digite 2 para mostrar\n Digite 3 para deletar");
+            System.out.println("Este é um CRUD de  alunos!\n Digite 1 para cadastrar\n Digite 2 para mostrar\n Digite 3 para deletar\n Digite 4 para editar");
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
@@ -26,7 +26,10 @@ public class App {
                     deletar(id);
                     break;
                 case 4:
-                    //editar
+                    mostrar();
+                    System.out.println("Digite o ID do aluno para atualização: ");
+                    Integer Id = sc.nextInt();
+                    editar();
                     break;    
             }
         }
@@ -68,5 +71,16 @@ public class App {
 
     public static void editar(Integer id){
         Aluno aluno = alunos.get(id);
+        Integer opcao = 0;
+        while (opcao != 4) {
+            System.out.println("____________________________________");
+            System.out.println("O aluno contém: ");
+            System.out.println("Nome: "+aluno.getNome());
+            System.out.println("Curso: "+aluno.getCursos());
+            System.out.println("Turma: "+aluno.getTurma());
+            System.out.println("Idade: "+aluno.getIdade());
+            System.out.println("____________________________________");
+            System.out.println("-Digite 1 para alterar o nome\n-Digite 2 para alterar o curso\n-Digite 3 para alterar a turma\n-Digite 4 para alterar a idade");            
+        }
     }
 }
