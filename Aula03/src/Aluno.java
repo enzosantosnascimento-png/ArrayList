@@ -37,4 +37,8 @@ public class Aluno {
     public void setTurma(String turma) {
         this.turma = turma;
     }
+    public void set(Integer id, Aluno aluno) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'set'");
+    }
 }
