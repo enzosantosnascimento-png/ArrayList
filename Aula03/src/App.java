@@ -10,7 +10,7 @@ public class App {
         Integer opcao = 0;
         while (opcao != 5) {
             
-            System.out.println("Este é um CRUD de  alunos!\n Digite 1 para cadastrar\n Digite 2 para mostrar\n Digite 3 para deletar\n Digite 4 para editar");
+            System.out.println("Este é um CRUD de  alunos!\n Digite 1 para cadastrar\n Digite 2 para mostrar\n Digite 3 para deletar\n Digite 4 para editar\n Digite 5 para filtrar por nome");
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
@@ -32,6 +32,8 @@ public class App {
                     Integer Id = sc.nextInt();
                     editar(Id);
                     break;    
+                case 5:
+                    filtrarNome();
             }
         }
     }
@@ -72,11 +74,48 @@ public class App {
     }
 
     public static void editar(Integer id){
+        Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
         Aluno aluno = alunos.get(id);
+        System.out.println("O nome do aluno é: "+aluno.getNome()+"digite 1 para editar: ");
         Integer opcao = sc.nextInt();
-       System.out.println("O nome atual é: "+aluno.getNome()+".\nDigite 1 para editar");
-       System.out.println("O curso do aluno é: "+aluno.getCursos()+".\nDigite 2 para editar");
-       System.out.println("A  turma atual do aluno é: "+aluno.getTurma()+".\nDigite 3 para editar");
-        
+        if(opcao == 1){
+            System.out.println("Digite o novo nome: ");
+            aluno.setNome(sc2.nextLine());
+        }
+        System.out.println("A idade do aluno é: "+aluno.getIdade()+"digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite a nova idade: ");
+            aluno.setIdade(sc.nextInt());
+        }
+        System.out.println("O curso do aluno é: "+aluno.getCursos()+"digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite o novo curso: ");
+            aluno.setCursos(sc2.nextLine());
+        }
+        System.out.println("A turma do aluno é: "+aluno.getTurma()+"digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite o novo turma: ");
+            aluno.setTurma(sc2.nextLine());
+        }
+    }
+
+    public static void filtrarNome(){
+        Scanner sc = new Scanner(System.in);
+        String nome;
+        System.out.println("Digite o nome para filtra: ");
+        nome = sc.nextLine();
+        List<Aluno> filtrados = new ArrayList<>();
+        for (Aluno individuo:alunos){
+            if(individuo.getNome().contains(nome)){
+                System.out.println("Nome: "+individuo.getNome());
+                System.out.println("Turma: "+individuo.getTurma());
+                System.out.println("____________________________________");
+
+            }
+        }
     }
 }
